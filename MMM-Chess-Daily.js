@@ -225,10 +225,10 @@ Module.register("MMM-Chess-Daily", {
 			if (userIsBlack) {
 				dest = this.swapOrientation(dest);
 			}
-			console.log(dest, lastMove);
+			Log.info(dest, lastMove);
 			console.info("highlighting", dest);
 			board.rows[7 - dest[1]].cells[dest[0]].innerHTML += "<div class='destination'></div>";
-			console.log(board.rows[7 - dest[1]].cells[dest[0]]);
+			Log.info(board.rows[7 - dest[1]].cells[dest[0]]);
 		}
 
 		return board;
@@ -243,7 +243,7 @@ Module.register("MMM-Chess-Daily", {
 			return wrapper;
 		}
 
-		console.log("building DOM...");
+		Log.info("building DOM...");
 		var divTable = document.createElement("div");
 		divTable.className = "divTable normal small light";
 		var divBody = document.createElement("table");
@@ -338,7 +338,7 @@ Module.register("MMM-Chess-Daily", {
 	// socketNotificationReceived from helper
 	socketNotificationReceived: function (notification, payload) {
 		if (notification === "MMM-Chess-Daily-GAMES-RECEIVED") {
-			console.log("games received - processing " + payload.body.games.length +
+			Log.info("games received - processing " + payload.body.games.length +
 				" games in total");
 			this.processData(payload.body);
 		}
